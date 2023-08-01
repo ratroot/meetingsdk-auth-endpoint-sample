@@ -10,13 +10,13 @@ const port = process.env.PORT || 4000;
 
 app.use(bodyParser.json(), cors());
 app.options("*", cors());
-
+console.log(process.env.ZOOM_MEETING_SDK_KEY);
 app.post("/", (req, res) => {
   const iat = Math.round(new Date().getTime() / 1000) - 30;
   const exp = iat + 60 * 60 * 2;
 
   const oHeader = { alg: "HS256", typ: "JWT" };
-  console.log(process.env.ZOOM_MEETING_SDK_KEY);
+
   const oPayload = {
     sdkKey: process.env.ZOOM_MEETING_SDK_KEY,
     mn: req.body.meetingNumber,
