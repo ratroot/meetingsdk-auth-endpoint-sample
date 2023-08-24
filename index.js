@@ -11,7 +11,7 @@ const port = process.env.PORT || 4000;
 app.use(bodyParser.json(), cors());
 app.options("*", cors());
 console.log(process.env.ZOOM_MEETING_SDK_KEY);
-app.post("/", (req, res) => {
+app.post("/zoom", (req, res) => {
   const iat = Math.round(new Date().getTime() / 1000) - 30;
   const exp = iat + 60 * 60 * 2;
 
